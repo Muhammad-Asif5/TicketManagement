@@ -1,0 +1,105 @@
+Services Name: helpdesk
+
+oracle.install.db.config.starterdb.globalDBName / Database name = helpdesk
+
+Password: 123
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+drop tablespace HelpDesk including contents and datafiles cascade constraints;
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+create tablespace HelpDesk
+datafile 'C:\app\oradata\HelpDesk01.dbf' size 1000m;
+
+create user HelpDesk identified by 123 default tablespace HelpDesk;
+
+grant connect, resource, create table, create view to HelpDesk;
+grant dba to HelpDesk;
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+select 'drop table "' || TABLE_NAME || '"cascade constraints;'
+from user_tables;
+
+///////////////////////////////////////////////////////////////////////////////////
+
+CREATE TABLE EMPLOYEE 
+(
+  EMP_ID NUMBER NOT NULL 
+, NAME VARCHAR2(50 BYTE) 
+, USER_ID VARCHAR2(50 BYTE) 
+, USER_PASSWORD VARCHAR2(50 BYTE) 
+, USER_TYPE VARCHAR2(50 BYTE) 
+, EMAIL VARCHAR2(100 BYTE) 
+, STATUS NCHAR(10) 
+);
+
+alter table EMPLOYEE 
+add constraint pk_EMP_ID primary key(EMP_ID);
+
+--///////////////////////////////////////////////////////////////////////////////////
+
+
+CREATE TABLE HITCOUNT 
+(
+  ID NUMBER NOT NULL 
+, HOME NUMBER 
+, ABOUT NUMBER 
+, CONTACT NUMBER 
+, DOWNLOADS NUMBER 
+, SECURITY NUMBER 
+);
+
+alter table HITCOUNT 
+add constraint pk_ID primary key(ID);
+
+--///////////////////////////////////////////////////////////////////////////////////
+
+CREATE TABLE QUERY
+(
+Q_ID NUMBER(*, 0) NOT NULL 
+, ASSIGN_TIME CHAR(8 BYTE) 
+, SOLVE_TIME CHAR(8 BYTE) 
+, ASSIGN_DATE DATE 
+, DESCRIPTION VARCHAR2(50 BYTE) 
+, OFFICE VARCHAR2(20 BYTE) 
+, EMP_ID NUMBER(*, 0) 
+, STATUS CHAR(1 BYTE) 
+, COMMENTS VARCHAR2(100 BYTE) 
+, USER_ID VARCHAR2(20 BYTE) 
+, CREATEDTIME CHAR(8 BYTE) 
+, CREATED_DATE DATE 
+, USER_EMAIL VARCHAR2(100 BYTE) 
+);
+
+alter table QUERY
+add constraint pk_Q_ID primary key(Q_ID);
+
+--///////////////////////////////////////////////////////////////////////////////////
+
+
+
+CREATE TABLE USERS
+(
+ EMP_ID NUMBER NOT NULL 
+, USER_NAME VARCHAR2(50 BYTE) 
+, EMAIL VARCHAR2(100 BYTE) 
+, USER_PASSWORD VARCHAR2(50 BYTE) 
+, USER_TYPE VARCHAR2(50 BYTE) 
+, STATUS CHAR(1 BYTE) 
+);
+
+alter table USERS
+add constraint pk_EMPID primary key(EMP_ID);
+
+--///////////////////////////////////////////////////////////////////////////////////
+
+
+

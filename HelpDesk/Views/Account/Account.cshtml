@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Users</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/userStyle.css" rel="stylesheet" />
+    <style type="text/css">
+        #showcase {
+            height: 80vh;
+            background: url(academics.jpg) no-repeat 0 -100px;
+            text-align: center;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-default" id="nav1">
+            <div class="container">
+                <h1><span class="highlight">fast</span> Help Desk System</h1>
+            </div>
+        </nav>
+
+        <section id="">
+            <div class="container">
+                @*<h1>Affordable Professional Web Design</h1>
+                <p>Affordable Professional Web Design Affordable Professional Web Design</p>*@
+                <div class="panel panel-primary" style="margin:20px 100px;;">
+                    <div class="panel-heading" style="position:relative">
+                        <center><h3>Change <span class="highlight">Admin</span> User Here</h3></center>
+                        <div style="float:right; position:absolute; top:30px; right:20px;">
+                            <a href="~/Default/Default" class="btn btn-default">Back</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <div class="form-group">
+                                <label for="SuperUser">Select User</label>
+                                @*<input type="text" class="form-control" name="" placeholder="email@example.com">*@
+                                @*<select class="form-control" id="SuperUser">
+                                </select>*@
+                                @Html.DropDownList("SuperUser", (List<SelectListItem>)ViewBag.getEmployeeName,
+                                                                   "--Select User--", new { @class = "form-control", @onchange="getUserId(this.value)"})
+                            </div>
+                            <div class="form-group">
+                                <label for="LoginID">Login ID</label>
+                                <input id="LoginID" type="text" class="form-control" name="LoginID" placeholder="Login ID (x.abc)">
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">User Password</label>
+                                <input id="Password" type="text" class="form-control" name="Password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" onclick="UpdateEmp()" class="btn btn-primary btn-lg">Change</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>&copy @DateTime.Now.Year</footer>
+    </div>
+</body>
+</html>
+
+
+<script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="~/ScriptController/Account.js"></script>

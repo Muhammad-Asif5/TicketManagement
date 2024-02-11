@@ -1,0 +1,184 @@
+﻿@model IEnumerable<HelpDesk.Models.modelEmployeeQuery>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #QueryTable_wrapper a{margin-right:10px; border-radius:5px}
+      table td {
+          word-wrap: break-word;
+          max-width: 100px;
+        }
+        #QueryTable_wrapper td {
+          white-space:inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <table class="table table-bordered" id="QueryTable">
+            <thead>
+                <tr>
+                    <th>
+                        <label>ID</label>
+                    </th>
+                    <th>
+                        <label>IT Admin Name</label>
+                    </th>
+                    <th>
+                        <label>Created Time</label>
+                    </th>
+                    <th>
+                        <label>Date</label>
+                    </th>
+                    <th>
+                        <label>Assign Time</label>
+                    </th>
+                    <th class="no-sort">
+                        <label>Assign Date</label>
+                    </th>
+                    <th>
+                        <label>Solve Time</label>
+                    </th>
+                    <th>
+                        <label>Solve Date</label>
+                    </th>
+                    <th class="no-sort">
+                        <label>Problem</label>
+                    </th>
+                    
+                    <th class="no-sort">
+                        <label>Office</label>
+
+                    </th>
+                    <th >
+                        <label>Remarks</label>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Q_ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATEDTIME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATED_DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ASSIGN_TIME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ASSIGN_DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SOLVE_TIME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SOLVE_DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                        </td>
+                       
+                        
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OFFICE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COMMENTS)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
+<script src="~/Script/jquery-3.3.1.min.js"></script>
+<script src="~/Script/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Script/DataTables/dataTables.buttons.min.js"></script>
+<script src="~/Script/DataTables/buttons.flash.min.js"></script>
+<script src="~/Script/DataTables/jszip.min.js"></script>
+<script src="~/Script/DataTables/pdfmake.min.js"></script>
+<script src="~/Script/DataTables/vfs_fonts.js"></script>
+<script src="~/Script/DataTables/buttons.html5.min.js"></script>
+<script src="~/Script/DataTables/buttons.print.min.js"></script>
+<script src="~/Script/DataTables/dataTables.select.min.js"></script>
+<script src="~/Script/DataTables/responsive.bootstrap.min.js"></script>
+
+
+<script>
+
+    $("#QueryTable").DataTable({
+        buttons: [
+           {
+               extend: 'print',
+               text: 'print',
+               filename: 'name',
+               className: 'btn btn-primary'
+           },
+           {
+               extend: 'excel',
+               text: 'Download',
+               filename: 'name',
+               sheetName: 'my sheet',
+               className: 'btn btn-primary'
+           }
+        ],
+        dom: '1Bfrtip',
+        language: {
+            search: "",
+            searchPlaceholder:"Search Record",
+        },
+        select: true,
+        select: {
+            info:false,
+        },
+        "bLengthChange": false,
+        "processing": true,
+        columnDefs: [
+            { targets: 'no-sort', orderable: false }
+        ],
+        //columnDefs: [
+        //        {
+        //            render: function (data, type, full, meta) {
+        //                return "<div class='text-wrap width-200'>" + data + "</div>";
+        //            },
+        //            targets: 4,
+        //            targets: 'no-sort', orderable: false
+        //        }
+        //],
+        //deferRender: true,
+        //scrollX: true,
+        //scrollY: 200,
+        //scrollCollapse: true,
+        //scroller: true,
+
+    });
+    $('input[type="search').addClass('form-control');
+
+</script>

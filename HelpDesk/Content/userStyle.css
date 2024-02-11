@@ -1,0 +1,33 @@
+
+#heroimage{
+	background-image: url('academics.jpg');
+	height: auto; background-repeat: no-repeat; background-size: contain; text-align: center; position: relative;
+}
+
+#nav1{background: #35424a; height: 80px; border-bottom: #e8491d 3px solid;}
+#nav1 h1{ font-size: 2em; font-weight: bold; color: #fff; }
+#nav1 h1 span.highlight{text-transform: uppercase; color: #e8491d;}
+
+center h3{ font-size: 2em; font-weight: bold; color: #fff; font-family: cursive; }
+center h3 span.highlight{text-transform: uppercase; color: #e8491d;}
+
+        footer {
+            padding: 20px;
+            margin-top: 0px;
+            color: #ffffff;
+            background-color: #e8491d;
+            text-align: center;
+        }
+        .panel {
+            box-shadow: 0 0 10px 2px;
+        }
+
+        .panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #354157;
+    border-color: #040315;
+}
+
+        .btn-group-lg>.btn, .btn-lg { border-radius: 24px;}
+        .btn-group-lg>.btn, .btn-lg:hover {transition:1s; background:#27334b}
+

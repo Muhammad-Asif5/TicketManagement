@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="USER_ID" Type="varchar2" MaxLength="50" />
+          <Property Name="USER_PASSWORD" Type="varchar2" MaxLength="50" />
+          <Property Name="USER_TYPE" Type="varchar2" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="STATUS" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="MESSAGE" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HITCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HOME" Type="number" Precision="38" Scale="0" />
+          <Property Name="ABOUT" Type="number" Precision="38" Scale="0" />
+          <Property Name="CONTACT" Type="number" Precision="38" Scale="0" />
+          <Property Name="DOWNLOADS" Type="number" Precision="38" Scale="0" />
+          <Property Name="SECURITY" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="QUERY">
+          <Key>
+            <PropertyRef Name="Q_ID" />
+          </Key>
+          <Property Name="Q_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ASSIGN_TIME" Type="char" MaxLength="8" />
+          <Property Name="SOLVE_TIME" Type="char" MaxLength="8" />
+          <Property Name="ASSIGN_DATE" Type="date" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="50" />
+          <Property Name="OFFICE" Type="varchar2" MaxLength="20" />
+          <Property Name="EMP_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="COMMENTS" Type="varchar2" MaxLength="100" />
+          <Property Name="USER_ID" Type="varchar2" MaxLength="20" />
+          <Property Name="CREATEDTIME" Type="char" MaxLength="8" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="USER_EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="SOLVE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="USER_PASSWORD" Type="varchar2" MaxLength="50" />
+          <Property Name="USER_TYPE" Type="varchar2" MaxLength="50" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="RESER_PASSWORD_CODE" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="HELPDESK" store:Type="Tables" />
+          <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" Schema="HELPDESK" store:Type="Tables" />
+          <EntitySet Name="HITCOUNT" EntityType="Self.HITCOUNT" Schema="HELPDESK" store:Type="Tables" />
+          <EntitySet Name="QUERY" EntityType="Self.QUERY" Schema="HELPDESK" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="HELPDESK" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Nullable="false" Precision="38" Scale="0" Type="Decimal" />
+          <Property Name="NAME" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_ID" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_PASSWORD" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_TYPE" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EMAIL" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="STATUS" MaxLength="10" FixedLength="true" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MESSAGE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HITCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HOME" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ABOUT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CONTACT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DOWNLOADS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SECURITY" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USER_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RESER_PASSWORD_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="FEEDBACKs" EntityType="Self.FEEDBACK" />
+          <EntitySet Name="HITCOUNTs" EntityType="Self.HITCOUNT" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="QUERies" EntityType="Model.QUERY" />
+        </EntityContainer>
+        <EntityType Name="QUERY">
+          <Key>
+            <PropertyRef Name="Q_ID" />
+          </Key>
+          <Property Name="Q_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ASSIGN_TIME" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="SOLVE_TIME" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="ASSIGN_DATE" Type="DateTime" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OFFICE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDTIME" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="USER_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SOLVE_DATE" Type="DateTime" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="Model.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEEDBACKs">
+            <EntityTypeMapping TypeName="Model.FEEDBACK">
+              <MappingFragment StoreEntitySet="FEEDBACK">
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HITCOUNTs">
+            <EntityTypeMapping TypeName="Model.HITCOUNT">
+              <MappingFragment StoreEntitySet="HITCOUNT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HOME" ColumnName="HOME" />
+                <ScalarProperty Name="ABOUT" ColumnName="ABOUT" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="DOWNLOADS" ColumnName="DOWNLOADS" />
+                <ScalarProperty Name="SECURITY" ColumnName="SECURITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="Model.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="RESER_PASSWORD_CODE" ColumnName="RESER_PASSWORD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUERies">
+            <EntityTypeMapping TypeName="Model.QUERY">
+              <MappingFragment StoreEntitySet="QUERY">
+                <ScalarProperty Name="SOLVE_DATE" ColumnName="SOLVE_DATE" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="OFFICE" ColumnName="OFFICE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ASSIGN_DATE" ColumnName="ASSIGN_DATE" />
+                <ScalarProperty Name="SOLVE_TIME" ColumnName="SOLVE_TIME" />
+                <ScalarProperty Name="ASSIGN_TIME" ColumnName="ASSIGN_TIME" />
+                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
